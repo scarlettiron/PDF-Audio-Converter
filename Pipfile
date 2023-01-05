@@ -9,6 +9,9 @@ pyttsx3 = "*"
 pdfplumber = "*"
 playsound = "*"
 python-vlc = "*"
+speechrecognition = "*"
+pyaudio = "*"
+pydub = "*"
 
 [dev-packages]
 

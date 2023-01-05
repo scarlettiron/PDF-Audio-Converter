@@ -3,7 +3,7 @@ import pyttsx3
 import pdfplumber
 from random import randint
 from playsound import playsound
-
+import speech_recognition as sr
 
 class pdf_audio_converter:
     def __init__(self, file_path, save_path = './', text=None):
@@ -66,7 +66,26 @@ class pdf_audio_converter:
     def play_audio(self):
         playsound(self.file_path)
         return
-                
+    
+    #for converting speech to text
+    def speech_to_text(self):
+        r = sr.Recognizer()
+        final_text = None
+        
+        with sr.AudioFile(self.file_path) as audio:
+            data = r.record(audio)
+            text = r.recognize_google(data)
+            final_text = text
+        
+        #create naming vars
+        file_key = randint(0, 10000)
+        file_name = f"audio_text_{file_key}.txt"
+        
+        with open(file_name, 'w') as txt:
+            txt.writelines([final_text])
+            txt.close()
+        
+        return
                 
 #for local testing
 if __name__ == "__main__":
