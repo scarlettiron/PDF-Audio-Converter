@@ -11,7 +11,7 @@ class pdf_audio_converter:
         self.audio_engine = pyttsx3.init()
     
     #convert pdf file to audio   
-    def pdf_to_audio(self):
+    def pdf_to_text(self):
         
         final_text = ""
         
@@ -36,7 +36,17 @@ class pdf_audio_converter:
             book.close()
         
         return self
+    
+    def save_pdf_as_audio(self):
+        file_key = randint(0, 10000)
+        file_name = f"pdf_audio_{file_key}.mp3"
+        file_path = f"{self.save_path}{file_name}"
 
+        self.audio_engine.save_to_file(self.text, file_path)
+        self.audio_engine.runAndWait()
+        
+
+                
                     
                     
             
