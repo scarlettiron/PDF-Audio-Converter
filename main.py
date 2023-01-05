@@ -11,7 +11,7 @@ class pdf_audio_converter:
         self.text = text
         self.audio_engine = pyttsx3.init()
     
-    #convert pdf file to audio   
+    #convert pdf file to cleaned text  
     def pdf_to_text(self):
         
         final_text = ""
@@ -38,6 +38,8 @@ class pdf_audio_converter:
         
         return self
     
+    #for saving cleaned text as an audio file
+    #requires pdf to text to be run first
     def save_pdf_as_audio(self):
         file_key = randint(0, 10000)
         file_name = f"pdf_audio_{file_key}.mp3"
@@ -47,7 +49,8 @@ class pdf_audio_converter:
         self.audio_engine.runAndWait()
         return
         
-        
+    #for playing cleaned text as audio
+    #requires pdf to text to beb run first   
     def play_text_audio(self):
         if not self.text:
             raise Exception('Text needed')
@@ -56,6 +59,7 @@ class pdf_audio_converter:
         self.audio_engine.runAndWait()
         return
     
+    #for playing audio from self.file_path
     def play_audio(self):
         playsound(self.file_path)
         return
