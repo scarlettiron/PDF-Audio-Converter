@@ -2,6 +2,7 @@ import PyPDF3
 import pyttsx3
 import pdfplumber
 from random import randint
+from playsound import playsound
 
 class pdf_audio_converter:
     def __init__(self, file_path, save_path = './', text=None):
@@ -44,6 +45,7 @@ class pdf_audio_converter:
 
         self.audio_engine.save_to_file(self.text, file_path)
         self.audio_engine.runAndWait()
+        return
         
         
     def play_text_audio(self):
@@ -53,7 +55,11 @@ class pdf_audio_converter:
         self.audio_engine.say(self.text)
         self.audio_engine.runAndWait()
         return
-
+    
+    def play_audio(self):
+        playsound(self.file_path)
+        return
+                
                     
                     
             
