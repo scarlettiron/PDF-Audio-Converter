@@ -4,6 +4,7 @@ import pdfplumber
 from random import randint
 from playsound import playsound
 
+
 class pdf_audio_converter:
     def __init__(self, file_path, save_path = './', text=None):
         self.file_path = file_path
@@ -24,6 +25,7 @@ class pdf_audio_converter:
             pages = reader.numPages
             
             with pdfplumber.open(self.file_path) as pdf:
+
                 for i in range(pages):
                     page = pdf.pages[i]
                     #extract text from pdf
@@ -33,7 +35,7 @@ class pdf_audio_converter:
                     final_text += text
                     self.text = final_text
                     
-                    pdf.close()
+                pdf.close()
             book.close()
         
         return self
@@ -65,7 +67,15 @@ class pdf_audio_converter:
         playsound(self.file_path)
         return
                 
-                    
+                
+#for local testing
+if __name__ == "__main__":
+    #pdf's
+    #action = pdf_audio_converter('./AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf')
+    #audio's
+    action = pdf_audio_converter('pdf_audio_2757.mp3')
+    
+    action.play_audio()
                     
             
             

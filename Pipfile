@@ -8,6 +8,7 @@ pypdf3 = "*"
 pyttsx3 = "*"
 pdfplumber = "*"
 playsound = "*"
+python-vlc = "*"
 
 [dev-packages]
 
