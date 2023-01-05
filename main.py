@@ -57,6 +57,7 @@ class pdf_audio_converter:
     
         self.audio_engine.say(self.text)
         self.audio_engine.runAndWait()
+        self.audio_engine.stop()
         return
     
     #for playing audio from self.file_path
