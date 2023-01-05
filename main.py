@@ -45,8 +45,15 @@ class pdf_audio_converter:
         self.audio_engine.save_to_file(self.text, file_path)
         self.audio_engine.runAndWait()
         
+        
+    def play_text_audio(self):
+        if not self.text:
+            raise Exception('Text needed')
+    
+        self.audio_engine.say(self.text)
+        self.audio_engine.runAndWait()
+        return
 
-                
                     
                     
             
